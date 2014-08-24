@@ -54,9 +54,11 @@
                         </div> 
                     </div>
                     
-                    <button class="btn btn-default" ng-click="orderCtrl.addItem(orderCtrl.item)">Insert new drink</button>
-                    
+                    <button class="btn btn-default" ng-disabled="orderCtrl.isDisabled(orderCtrl.item,orderCtrl.order)" ng-click="orderCtrl.addItem(orderCtrl.item)">Insert new drink</button>
+
                     <div class="form-group" ng-hide="orderCtrl.order.items.length == 0">
+                        <h3>Items</h3>
+
                         <table class="table table-striped table-hover">
                             <thead>
                                 <th>Item</th>
@@ -73,6 +75,7 @@
                         </table>
                     </div>
                     <button ng-click="orderCtrl.finalizeOrder(orderCtrl.order)" class="btn btn-default" ng-hide="orderCtrl.order.items.length == 0">Finalize Order</button>
+
                 </div>
             </div>
         

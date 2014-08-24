@@ -35,6 +35,15 @@
 			order.items = [];
 			delete order.table;		
 		};
+
+		this.isDisabled = function (item, order) {
+			console.log(order.table.length == 0
+				|| !item.product || !item.quantity);
+			
+			return (order.table.length == 0
+				|| !item.product || !item.quantity);
+
+		};
 	});
 
 })();
