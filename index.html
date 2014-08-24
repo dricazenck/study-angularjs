@@ -43,7 +43,7 @@
                     <div>
                         <div class="form-group order-drink">
                             <label>Drink</label>
-                            <select ng-model="orderCtrl.item.product" ng-options="product.name for product in orderCtrl.products"  ng-click="orderCtrl.addItem(orderCtrl.item)"
+                            <select ng-model="orderCtrl.item.product" ng-options="product.name for product in orderCtrl.products"
                             type="select" class="form-control">
                                 <option value="">--- Select one drink ---</option>
                             </select>
@@ -51,9 +51,12 @@
                         <div class="form-group order-quantity">
                             <label>Quantity</label>
                             <input ng-model="orderCtrl.item.quantity" ng-disabled="!orderCtrl.item.product" type="text" class="form-control">
-                        </div>                        
+                        </div> 
                     </div>
-                    <div class="form-group" ng-if="orderCtrl.order.items">
+                    
+                    <button class="btn btn-default" ng-click="orderCtrl.addItem(orderCtrl.item)">Insert new drink</button>
+                    
+                    <div class="form-group" ng-hide="orderCtrl.order.items.length == 0">
                         <table class="table table-striped table-hover">
                             <thead>
                                 <th>Item</th>
@@ -62,14 +65,14 @@
                                 <th>Subtotal</th>
                             </thead>
                             <tr ng-repeat="item in orderCtrl.order.items">
-                                <td>{{item.name}}</td>
+                                <td>{{item.product.name}}</td>
                                 <td>{{item.quantity}}</td>
-                                <td>{{item.price}}</td>
+                                <td>{{item.product.price}}</td>
                                 <td>{{item.subtotal}}</td>
                             </tr>
                         </table>
                     </div>
-                    <button class="btn btn-default">Make Order</button>
+                    <button ng-click="orderCtrl.finalizeOrder(orderCtrl.order)" class="btn btn-default" ng-hide="orderCtrl.order.items.length == 0">Finalize Order</button>
                 </div>
             </div>
         

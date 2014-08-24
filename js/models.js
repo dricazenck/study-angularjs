@@ -31,8 +31,12 @@ var createOrder = function (id, table, items, status) {
 };
 
 var createItems = function(product, quantity) {
+    
+    var subtotal = product.price *  quantity;
+
     return {
         product : product,
-        quantity: quantity
+        quantity: quantity, 
+        subtotal: subtotal
     };
 };
