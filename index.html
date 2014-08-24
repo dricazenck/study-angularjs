@@ -72,10 +72,16 @@
                                 <td>{{item.product.price}}</td>
                                 <td>{{item.subtotal}}</td>
                             </tr>
+                            <thead>
+                                <th></th>
+                                <th></th>
+                                <th>Total</th>
+                                <th>{{orderCtrl.order.total}}</th>
+                            </thead>
                         </table>
                     </div>
-                    <button ng-click="orderCtrl.finalizeOrder(orderCtrl.order)" class="btn btn-default" ng-hide="orderCtrl.order.items.length == 0">Finalize Order</button>
-
+                    
+                    <button ng-hide="orderCtrl.order.items.length == 0" ng-click="orderCtrl.finalizeOrder(orderCtrl.order)" class="btn btn-default">Finalize Order</button>
                 </div>
             </div>
         

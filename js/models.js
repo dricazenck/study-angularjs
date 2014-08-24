@@ -14,11 +14,10 @@ var createProduct = function (id, name, price, description) {
 };
 
 var createOrder = function (id, table, items, status) {
-        
+    
     var total = 0;
-
     items.forEach(function (item){
-         total += item.product.price * item.quantity;
+         total += item.subtotal;
     });
  
     return {
@@ -30,8 +29,7 @@ var createOrder = function (id, table, items, status) {
     };
 };
 
-var createItems = function(product, quantity) {
-    
+var createItems = function(product, quantity) { 
     var subtotal = product.price *  quantity;
 
     return {

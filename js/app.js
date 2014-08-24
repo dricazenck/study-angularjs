@@ -24,6 +24,14 @@
 
 		this.addItem = function(item) {
 			this.order.items.push(createItems(item.product, item.quantity));
+			
+			var total = 0;
+		    this.order.items.forEach(function (item){
+		         total += item.subtotal;
+		    });
+
+		    this.order.total = total;
+			
 			delete item.quantity;
 			delete item.product;
 		};
@@ -38,7 +46,7 @@
 
 		this.isDisabled = function (item, order) {
 
-			return (order.table.length == 0
+			return (!order.table || order.table.length == 0
 				|| !item || !item.product || !item.quantity);
 
 		};
