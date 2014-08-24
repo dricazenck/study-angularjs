@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="order" ng-controller="OrderController as orderCtrl">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>{{orderCtrl.nameApp}}</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/order.css" />
+    </head>
+
+    <body>
+        <div>
+            <h2 class="page-header">{{orderCtrl.nameApp}}</h2>
+
+            <div class="panel panel-default category">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Menu</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <th>#</th>
+                            <th>Drink</th>
+                            <th>Price</th>
+                        </thead>
+                        <tr ng-repeat="product in orderCtrl.products">
+                            <td>{{product.id}}</td>
+                            <td>{{product.name}}</td>
+                            <td>{{product.price}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="panel panel-default category">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Ordering Drinks</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>Table Number</label>
+                        <input ng-model="orderCtrl.order.table" type="text" class="form-control" placeholder="Insert table number">
+                    </div>
+                    <div>
+                        <div class="form-group order-drink">
+                            <label>Drink</label>
+                            <select ng-model="orderCtrl.order.product" ng-options="product.name for product in orderCtrl.products"  
+                            type="select" class="form-control">
+                                <option value="">--- Select one drink ---</option>
+                            </select>
+                        </div>  
+                        <div class="form-group order-amount">
+                            <label>Amount</label>
+                            <input ng-model="orderCtrl.order.quantidade" type="text" class="form-control">
+                        </div>                        
+                    </div>
+                    <button class="btn btn-default">Conclude</button>
+                </div>
+            </div>
+        
+            <div class="panel panel-default category" ng-if="orderCtrl.orders">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Ordered</h3>
+                </div>
+                <div class="panel-body">
+	                <table class="table table-striped table-hover">
+	                    <thead>
+	                        <th>Id</th>
+	                        <th>Table</th>
+	                        <th>Status</th>
+	                        <th>Details</th>
+	                    </thead>
+	                    <tr ng-repeat="order in orderCtrl.orders">
+	                        <td>{{order.id}}</td>
+	                        <td>{{order.table}}</td>
+	                        <td>{{order.status}}</td>
+	                        <td>{{order.details}}</td>
+	                    </tr>
+	                </table>
+                </div>
+            </div>
+        </div>
+
+        <script src="lib/angular.min.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>

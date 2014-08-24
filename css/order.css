@@ -1,0 +1,13 @@
+ .category { 
+    width: 30%;
+    float: left;
+    margin: 7px;
+}
+.order-amount {
+    width: 20%;
+    float: left;
+}
+.order-drink {
+    width: 80%;
+    float: left;
+}
