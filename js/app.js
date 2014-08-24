@@ -53,9 +53,17 @@
 		};
 
 		this.isDisabled = function (item, order) {
-			return (!order.table || order.table.length == 0
+			return (!order.table || !order.table.length
 				|| !item || !item.product || !item.quantity);
 		};
+
+		this.showDetailsOrder = function(order) {
+			this.details = order;
+		};
+
+		this.closeDetails = function() {
+			delete this.details;
+		}
 	});
 
 })();
