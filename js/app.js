@@ -19,7 +19,7 @@
 		this.orders = [ 
 			createOrder(1, "24", [createItems(this.products[0],1), createItems(this.products[4],2)], 'Ok'), 
 			createOrder(2, "10", [createItems(this.products[1],2)], 'Cancel'), 
-			createOrder(3, "02", [createItems(this.products[2], 1), createItems(this.products[3], 1)],'OK')
+			createOrder(3, "02", [createItems(this.products[2], 1), createItems(this.products[3], 1)],'Ok')
 		];
 
 		this.addItem = function(item) {
@@ -44,11 +44,17 @@
 			delete order.table;		
 		};
 
-		this.isDisabled = function (item, order) {
+		this.cancelOrder = function(order) {
+			order.status = 'Cancel';
+		};
 
+		this.deleteOrder = function(order) {
+			this.orders.splice(order, 1);
+		};
+
+		this.isDisabled = function (item, order) {
 			return (!order.table || order.table.length == 0
 				|| !item || !item.product || !item.quantity);
-
 		};
 	});
 

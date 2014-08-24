@@ -85,23 +85,28 @@
                 </div>
             </div>
         
-            <div class="panel panel-default category" ng-if="orderCtrl.orders">
+            <div class="panel panel-default category" ng-if="orderCtrl.orders.length > 0">
                 <div class="panel-heading">
                     <h3 class="panel-title">Ordered</h3>
                 </div>
                 <div class="panel-body">
 	                <table class="table table-striped table-hover">
 	                    <thead>
-	                        <th>Id</th>
+	                        <th>#</th>
 	                        <th>Table</th>
 	                        <th>Status</th>
 	                        <th>Total</th>
+                            <th>Action</th>
 	                    </thead>
 	                    <tr ng-repeat="order in orderCtrl.orders">
 	                        <td>{{order.id}}</td>
 	                        <td>{{order.table}}</td>
 	                        <td>{{order.status}}</td>
 	                        <td>{{order.total}}</td>
+                            <td>
+                                <a href="#" ng-show="order.status == 'Ok'" ng-click="orderCtrl.cancelOrder(order)">Cancel</a>
+                                <a href="#" ng-show="order.status != 'Ok'" ng-click="orderCtrl.deleteOrder(order)">Delete</a>
+                            </td>
 	                    </tr>
 	                </table>
                 </div>
