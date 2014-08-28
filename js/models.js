@@ -13,19 +13,24 @@ var createProduct = function (id, name, price, description) {
     }
 };
 
-var createOrder = function (id, table, items, status) {
+var createOrder = function (id, table, items, status, date) {
     
-    var total = 0;
-    items.forEach(function (item){
-         total += item.subtotal;
-    });
+    var getTotal =function () {
+        var total = 0;
+
+        items.forEach(function (item){
+             total += item.subtotal;
+        });
+        return total;
+    };
  
     return {
         id : id ,
         table : table,
+        date : date,
         items : items,
         status : status,
-        total : total
+        getTotal : getTotal
     };
 };
 
