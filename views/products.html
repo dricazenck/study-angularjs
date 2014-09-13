@@ -1,0 +1,20 @@
+<menu page="products"></menu>
+
+<div class="panel panel-default category">
+    <div class="panel-body">
+        <input class="form-control" type="text" ng-model="keySearch" placeholder="Filter a product..."  >
+
+        <table class="table table-striped table-hover">
+            <thead>
+                <th>#</th>
+                <th><a href="" ng-click="defineOrderBy('name')">Drink</a></th>
+                <th><a href="" ng-click="defineOrderBy('price')">Price</a></th>
+            </thead>
+            <tr ng-repeat="product in products | filter:keySearch | orderBy:field:reverse">
+                <td>{{product.id}}</td>
+                <td>{{product.name | uppercase | limitTo:19 | exclamation:2 }}</td>
+                <td>{{product.price | currency}}</td>
+            </tr>
+        </table>
+    </div>
+<div>

@@ -1,0 +1,21 @@
+<menu page="orders"></menu>
+
+<div class="panel panel-default category" >
+    <h4>Details Order {{order.id}} - Table {{order.table}} </h4>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+        </thead>
+        <tr ng-repeat="item in order.items">
+            <td>{{item.product.name}}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.product.price | currency}}</td>
+            <td>{{item.subtotal | currency}}</td>
+        </tr>
+    </table>
+    <a href="#/orders">Return to orders</a>
+</div>

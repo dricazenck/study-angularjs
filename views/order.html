@@ -1,0 +1,60 @@
+<menu page="order"></menu>
+
+<div class="panel panel-default category">
+    
+    <div class="panel-body">
+        
+        <div class="alert alert-warning"  ng-show="orderForm.table.$invalid && orderForm.table.$dirty">Table is required</div>
+        <div class="alert alert-warning" ng-show="orderForm.quantity.$error.required && orderForm.quantity.$dirty">Quantity is required</div>
+        <div class="alert alert-warning" ng-show="orderForm.quantity.$error.pattern">Should be just numbers in quantity field</div>
+        <div class="alert alert-warning" ng-show="orderForm.product.$error.required && orderForm.product.$dirty">Drink is required</div>
+    
+        <form name="orderForm">
+            <div class="form-group">
+                <label>Table Number</label>
+                <input ng-model="order.table" name="table" ng-required="true" type="text" class="form-control" placeholder="Insert table number">
+            </div>
+            <div>
+                <div class="form-group order-drink">
+                    <label>Drink</label>
+                    <select ng-model="item.product" name="product" ng-required="true"  ng-options="product.name for product in products"
+                    type="select" class="form-control">
+                        <option value="">--- Select one drink ---</option>
+                    </select>
+                </div>  
+                <div class="form-group order-quantity">
+                    <label>Quantity</label>
+                    <input ng-model="item.quantity" name="quantity" maxlength="2" ng-required="true" type="text" class="form-control" ng-pattern="/^\d+$/">
+                </div> 
+            </div>
+            
+            <button class="btn btn-default" ng-disabled="orderForm.$invalid" ng-click="addItem(item)">Insert new drink</button>
+        </form>
+        <div class="form-group" ng-hide="order.items.length == 0">
+            <h3>Items</h3>
+
+            <table class="table table-striped table-hover">
+                <thead>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                </thead>
+                <tr ng-repeat="item in order.items">
+                    <td>{{item.product.name}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.product.price | currency}}</td>
+                    <td>{{item.subtotal}}</td>
+                </tr>
+                <thead>
+                    <th></th>
+                    <th></th>
+                    <th>Total</th>
+                    <th>{{order.getTotal() | currency}}</th>
+                </thead>
+            </table>
+        </div>
+        
+        <button ng-hide="order.items.length == 0" ng-click="finalizeOrder(order)" class="btn btn-default">Finalize Order</button>
+    </div>
+</div>
