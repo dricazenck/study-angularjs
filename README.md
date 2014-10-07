@@ -1,36 +1,30 @@
-study-angularjs
-===============
+Topics Angular
+==
 
+- directives
 
-== directives
-= repeat
-= show / hide / if
+- repeat
+
+- show / hide / if
  
-== Filter
+- Filter
 
-= orderby
-= filter
-= create filter
+- orderby
 
-# internacionalization
+- filter
 
-# validation
+- create filter
 
+- internacionalization
 
-# http
+- validation
 
-# single page application
+- http
 
-# api
+- single page application
 
-# include X routes
+- api
 
-# create directives
+- include X routes
 
-
-Bootstrap
-=========
-
-
-NodeJs
-=========
+- create directives
