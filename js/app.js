@@ -10,6 +10,7 @@
 		$routeProvider.when('/order-details/:id', { templateUrl: 'views/order-details.html', controller:'OrderController'});
 	});
 	
+	/** a sample for create filter **/
 	app.filter("exclamation", function () {	
 		return function (word, size) { 
 			var _size = 1;

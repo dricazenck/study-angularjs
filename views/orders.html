@@ -5,10 +5,10 @@
         <table class="table table-striped table-hover">
             <thead>
                 <th>#</th>
-                <th><a href="#" ng-click="defineOrderByOrders('table')">Table</a></th>
-                <th><a href="#" ng-click="defineOrderByOrders('date')">Date</a></th>
-                <th><a href="#" ng-click="defineOrderByOrders('status')">Status</a></th>
-                <th><a href="#" ng-click="defineOrderByOrders('getTotal()')">Total</a></th>
+                <th><a href="#" ng-click="defineOrderBy('table')">Table</a></th>
+                <th><a href="#" ng-click="defineOrderBy('date')">Date</a></th>
+                <th><a href="#" ng-click="defineOrderBy('status')">Status</a></th>
+                <th><a href="#" ng-click="defineOrderBy('getTotal()')">Total</a></th>
                 <th>Action</th>
             </thead>
             <tr ng-repeat="order in orders | orderBy: fieldOrder:reverseOrder">
@@ -18,7 +18,7 @@
                 <td>{{order.table}}</td>
                 <td>{{order.date | date : 'dd/MM/yyyy HH:mm:ss'}}</td>
                 <td>{{order.status}}</td>
-                <td>{{order.getTotal() | currency}}</td>
+                <td>{{order.total | currency}}</td>
                 <td>
                     <a href="#/orders" ng-show="order.status == 'Ok'" ng-click="cancelOrder(order)">Cancel</a>
                     <a href="#/orders" ng-show="order.status != 'Ok'" ng-click="deleteOrder(order)">Delete</a>

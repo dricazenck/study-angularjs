@@ -4,13 +4,8 @@ angular.module("order").factory('productsApi', function($http) {
         return $http.get("http://localhost:3000/products");
     };
 
-    var product = function() {
-        return $http.post("http://localhost:8000/drinks");
-    };
-
     return {
-        loadProducts : products,
-        addProduct : product
+        loadProducts: products
     };
 
 });
@@ -21,13 +16,13 @@ angular.module("order").factory('ordersApi', function($http) {
         return $http.get("http://localhost:3000/orders");
     };
 
-    var order = function() {
-        return $http.post("http://localhost:3000/orders");
+    var order = function(order) {
+        return $http.post("http://localhost:3000/orders", order);
     }
 
     return {
-        loadOrders : orders,
-        addOrder : order
+        loadOrders: orders,
+        addOrder: order
     };
 
 });

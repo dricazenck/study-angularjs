@@ -12,7 +12,11 @@
             </thead>
             <tr ng-repeat="product in products | filter:keySearch | orderBy:field:reverse">
                 <td>{{product.id}}</td>
-                <td>{{product.name | uppercase | limitTo:19 | exclamation:2 }}</td>
+                
+                <!-- Sample of created filter 'exclamation'-->
+                <!-- <td>{{product.name | uppercase | limitTo:19 | exclamation:2 }}</td> -->
+
+                <td>{{product.name | uppercase | limitTo:19 }}</td>
                 <td>{{product.price | currency}}</td>
             </tr>
         </table>

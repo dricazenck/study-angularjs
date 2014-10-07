@@ -1,17 +1,13 @@
 angular.module("order").controller("ProductController", function ($scope, $http, productsApi) {
     
     $scope.nameApp = ' ---Order Drinks---';
-    $scope.nameApp = 'Make Order Drinks';
 
-    $scope.order = createOrder('', "", [], 'Ok', new Date());
-            
-    $scope.loadingDrinks = function() {
+    $scope.loadingProducts = function() {
         productsApi.loadProducts().success(function(products, status){
             $scope.products = products;
         });
     };
-    
-    $scope.loadingDrinks();
+    $scope.loadingProducts();
     
     $scope.defineOrderBy = function (field) {
         $scope.field = field;

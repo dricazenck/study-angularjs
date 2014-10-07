@@ -1,7 +1,5 @@
-angular.module("order").controller("OrderController", function ($scope, $http, productsApi, ordersApi, $routeParams) {
-    $scope.nameApp = ' ---Order Drinks---';
-    $scope.nameApp = 'Make Order Drinks';
-
+ angular.module("order").controller("OrderController", function ($scope, $http, productsApi, ordersApi, $routeParams) {
+    
     $scope.order = createOrder('', "", [], 'Ok', new Date());
 
     $scope.loadingOrders = function() {
@@ -13,20 +11,20 @@ angular.module("order").controller("OrderController", function ($scope, $http, p
     };
 
     $scope.addOrder = function(order) {
-        $http.post("http://localhost:8000/orders", order).success(function(data, status) {
-            $scope.loadingOrders();      
+        ordersApi.addOrder(JSON.stringify(order)).success(function(data, status) {
+            $scope.loadingOrders();
         }).error(function (data, status){
             console.error(data);
         });
     };
 
-    $scope.loadingDrinks = function() {
+    $scope.loadingProducts = function() {
         productsApi.loadProducts().success(function(products, status){
             $scope.products = products;
         });
     };
     
-    $scope.loadingDrinks();
+    $scope.loadingProducts();
     $scope.loadingOrders();
 
     $scope.addItem = function(item) {
@@ -39,9 +37,6 @@ angular.module("order").controller("OrderController", function ($scope, $http, p
     };
 
     $scope.finalizeOrder = function(order) {
-
-        // $scope.orders.push(createOrder($scope.orders.length+1, order.table, order.items, order.status, new Date()));
-
         $scope.addOrder(order);
 
         order.items = [];
@@ -59,7 +54,7 @@ angular.module("order").controller("OrderController", function ($scope, $http, p
         $scope.orders.splice(order, 1);
     };
 
-    $scope.defineOrderByOrders = function (field) {
+    $scope.defineOrder = function (field) {
         $scope.fieldOrder = field;
         $scope.reverseOrder = !$scope.reverseOrder;
     };
