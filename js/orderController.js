@@ -1,4 +1,4 @@
- angular.module("order").controller("OrderController", function ($scope, $http, productsApi, ordersApi, $routeParams) {
+ angular.module("order").controller("OrderController", function ($scope, $http, productsApi, ordersApi, $routeParams, $modal, $alert) {
     
     $scope.order = createOrder('', "", [], 'Ok', new Date());
 
@@ -13,8 +13,16 @@
     $scope.addOrder = function(order) {
         ordersApi.addOrder(JSON.stringify(order)).success(function(data, status) {
             $scope.loadingOrders();
+            $scope.orderSave = true;
+            
+            $scope.alert = {
+              "title": "Done",
+              "type": "success"
+            };
+
         }).error(function (data, status){
             console.error(data);
+            $scope.orderSave = false;
         });
     };
 

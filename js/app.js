@@ -1,6 +1,6 @@
 (function() {
 
-	var app = angular.module("order", ['ngRoute']);
+	var app = angular.module("order", ['ngRoute',  'mgcrea.ngStrap.modal', 'mgcrea.ngStrap.aside', 'mgcrea.ngStrap.tooltip', 'mgcrea.ngStrap.alert']);
 
 	app.config(function($routeProvider) {
 		$routeProvider.when('/', { templateUrl: 'views/products.html', controller:'ProductController'});

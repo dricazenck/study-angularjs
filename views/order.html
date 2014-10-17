@@ -3,8 +3,10 @@
 <div class="panel panel-default category">
     
     <div class="panel-body">
-        
-        <div class="alert alert-warning"  ng-show="orderForm.table.$invalid && orderForm.table.$dirty">Table is required</div>
+
+        <div id="alerts-container"></div>
+
+        <div class="alert alert-warning" ng-show="orderForm.table.$invalid && orderForm.table.$dirty">Table is required</div>
         <div class="alert alert-warning" ng-show="orderForm.quantity.$error.required && orderForm.quantity.$dirty">Quantity is required</div>
         <div class="alert alert-warning" ng-show="orderForm.quantity.$error.pattern">Should be just numbers in quantity field</div>
         <div class="alert alert-warning" ng-show="orderForm.product.$error.required && orderForm.product.$dirty">Drink is required</div>
@@ -44,7 +46,7 @@
                     <td>{{item.product.name}}</td>
                     <td>{{item.quantity}}</td>
                     <td>{{item.product.price | currency}}</td>
-                    <td>{{item.subtotal}}</td>
+                    <td>{{item.subtotal | currency}}</td>
                 </tr>
                 <thead>
                     <th></th>
@@ -55,6 +57,8 @@
             </table>
         </div>
         
-        <button ng-hide="order.items.length == 0" ng-click="finalizeOrder(order)" class="btn btn-default">Finalize Order</button>
+        <button ng-hide="order.items.length == 0" ng-click="finalizeOrder(order)" class="btn btn-default" data-container="#alerts-container" bs-alert="alert">Finalize Order</button>
+
+
     </div>
 </div>
