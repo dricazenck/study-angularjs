@@ -13,8 +13,6 @@ Topics Angular
 
 - filter
 
-- create filter
-
 - internacionalization
 
 - validation
@@ -27,4 +25,4 @@ Topics Angular
 
 - include X routes
 
-- create directives
+- messages
